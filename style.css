@@ -1,0 +1,49 @@
+.container {
+    display:flex;
+    flex-wrap:wrap;
+    
+}
+/* header css */
+#header-container {
+    background-color:blue;
+
+}
+
+h1 {
+    color:white;
+    font-style:bold;
+    font-size:50px;
+    margin-left:700px;
+       
+}
+/* search-container css*/
+#search-container {
+
+    width:500px;
+    height:800px;
+    align-content:flex-start;
+}
+
+h2 {
+    
+    font-size:35px;
+
+}
+/* data container css */
+#data-container {
+
+    align-content:flex-end;
+    justify-content:flex-end;
+    flex-direction:column;
+    height:200px;
+    width:1250px;
+}
+/* weather-container */
+#weather-container {
+    position:absolute;
+    align-content:flex-end;
+    justify-content:flex-end;
+    flex-direction:column;
+    margin-left: 500px;
+    margin-top:350px;
+}
