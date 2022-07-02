@@ -21,6 +21,10 @@ submitButton.addEventListener("click" , function(){
     })
     .then(function (data){
         console.log(data)
+        console.log(data[0].lat)
+        console.log(data[0].lon)
+        var latCord = data[0].lat;
+        var lonCord = data[0].lon;
     })
 
 })
