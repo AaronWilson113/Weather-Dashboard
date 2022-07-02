@@ -29,6 +29,7 @@ h2 {
     font-size:35px;
 
 }
+
 /* data container css */
 #data-container {
 
@@ -38,6 +39,7 @@ h2 {
     height:200px;
     width:1250px;
 }
+
 /* weather-container */
 #weather-container {
     position:absolute;
