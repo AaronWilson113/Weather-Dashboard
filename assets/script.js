@@ -70,8 +70,6 @@ submitButton.addEventListener("click" , function(){
         firstCard.appendChild(humidity);
         firstCard.appendChild(UVindex);
         
-        
-
     })
 
 }
