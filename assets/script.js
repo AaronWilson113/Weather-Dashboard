@@ -4,11 +4,14 @@ var submitButton = document.getElementById("button");
 var input = document.getElementById("userInput")
 
 
-// Defining Variables for api call using user input
+// Defining Variables for first api call using user input
 var apiv1 = "http://api.openweathermap.org/geo/1.0/direct?q=";
 var apiv2 = "&limit=5&appid=35b4263be3c8fb07e61b756e7b5c6337";
 
-
+// Defining Variables for second api call 
+var weatherApiv1 = "https://api.openweathermap.org/data/2.5/onecall?lat=";
+var weatherApiv2 = "&lon=";
+var weatherApiv3 = "&appid=35b4263be3c8fb07e61b756e7b5c6337";
 
 submitButton.addEventListener("click" , function(){
 
@@ -25,10 +28,25 @@ submitButton.addEventListener("click" , function(){
         console.log(data[0].lon)
         var latCord = data[0].lat;
         var lonCord = data[0].lon;
-    })
 
+        secondApiCall(lonCord, latCord)
+        
+    });
+    // Api Call for weather data. Passed variables in function
+    function secondApiCall(lonCord , latCord) {
+
+        var requestString2 = weatherApiv1 + latCord + weatherApiv2 + lonCord + weatherApiv3;
+
+        fetch(requestString2)
+         .then (function (response){
+            return response.json();
+         
+        })
+        .then(function(data){
+            console.log(data)
+            console.log(data.current.uvi)
+        })
+    
+    }
+    
 })
-
-
-
-
