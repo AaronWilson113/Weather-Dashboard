@@ -49,10 +49,9 @@ submitButton.addEventListener("click" , function(){
      
     })
     .then(function(data){
-        console.log(data)
-        console.log(data.current.uvi)
         firstCard.innerHTML = ""
-        //creating elements and then appending data to the page
+        
+        //creating elements and then appending data to the page for current weather
         var cityTitle = document.createElement("p");
         var temp = document.createElement("p");
         var wind = document.createElement("p");
