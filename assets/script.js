@@ -2,7 +2,7 @@
 var apiKey = "35b4263be3c8fb07e61b756e7b5c6337"
 var submitButton = document.getElementById("button");
 var input = document.getElementById("userInput")
-
+var firstCard = document.getElementById("data-container")
 
 // Defining Variables for first api call using user input
 var apiv1 = "http://api.openweathermap.org/geo/1.0/direct?q=";
@@ -29,24 +29,51 @@ submitButton.addEventListener("click" , function(){
         var latCord = data[0].lat;
         var lonCord = data[0].lon;
 
-        secondApiCall(lonCord, latCord)
+        localStorage.setItem('latCord' , JSON.stringify(latCord));
+        localStorage.setItem('lonCord' , JSON.stringify(lonCord));
         
+        secondApiCall(lonCord, latCord)
     });
-    // Api Call for weather data. Passed variables in function
-    function secondApiCall(lonCord , latCord) {
-
-        var requestString2 = weatherApiv1 + latCord + weatherApiv2 + lonCord + weatherApiv3;
-
-        fetch(requestString2)
-         .then (function (response){
-            return response.json();
-         
-        })
-        .then(function(data){
-            console.log(data)
-            console.log(data.current.uvi)
-        })
-    
-    }
     
 })
+
+ // Api Call for weather data. Passed variables in function
+ function secondApiCall(lonCord , latCord) {
+
+    
+    var requestString2 = weatherApiv1 + latCord + weatherApiv2 + lonCord + weatherApiv3;
+
+    fetch(requestString2)
+     .then (function (response){
+        return response.json();
+     
+    })
+    .then(function(data){
+        console.log(data)
+        console.log(data.current.uvi)
+        firstCard.innerHTML = ""
+        //creating elements and then appending data to the page
+        var cityTitle = document.createElement("p");
+        var temp = document.createElement("p");
+        var wind = document.createElement("p");
+        var humidity = document.createElement("p");
+        var UVindex = document.createElement("p");
+
+        cityTitle.textContent = input.value
+        temp.textContent = "Temp: " + data.current.temp
+        wind.textContent = "Wind: " + data.current.wind_speed + "MPH"
+        humidity.textContent = "Humidity: " + data.current.humidity + "%"
+        UVindex.textContent = "Uv Index: " + data.current.uvi
+
+        firstCard.appendChild(cityTitle);
+        firstCard.appendChild(temp);
+        firstCard.appendChild(wind);
+        firstCard.appendChild(humidity);
+        firstCard.appendChild(UVindex);
+        
+        
+
+    })
+
+}
+
