@@ -1,10 +1,17 @@
 // Defining Variables from Html Elements
 var apiKey = "35b4263be3c8fb07e61b756e7b5c6337"
 var submitButton = document.getElementById("button");
-var input = document.getElementById("userInput")
-var firstCard = document.getElementById("data-container")
+var input = document.getElementById("userInput");
+var firstCard = document.getElementById("data-container");
 var secondCard = document.getElementById("weather-container");
-
+var firstCardInfo = document.getElementById("info");
+var secondCard1stInfo = document.getElementById("card1");
+var secondCard2ndInfo = document.getElementById("card2");
+var secondCard3rdInfo = document.getElementById("card3");
+var secondCard4thInfo = document.getElementById("card4");
+var secondCard5thInfo = document.getElementById("card5");
+var firstCardDate = document.getElementById("firstCard")
+var secondCardDate1 = document.getElementById("blah")
 // Defining Variables for first api call using user input
 var apiv1 = "http://api.openweathermap.org/geo/1.0/direct?q=";
 var apiv2 = "&limit=5&appid=35b4263be3c8fb07e61b756e7b5c6337";
@@ -40,6 +47,7 @@ submitButton.addEventListener("click" , function(){
 
  // Api Call for weather data. Passed variables in function
  function secondApiCall(lonCord , latCord) {
+    
 
     var requestString2 = weatherApiv1 + latCord + weatherApiv2 + lonCord + weatherApiv3;
 
@@ -49,9 +57,14 @@ submitButton.addEventListener("click" , function(){
      
     })
     .then(function(data){
+
         firstCard.innerHTML = ""
+        secondCard1stInfo.innerHTML = ""
+        
+
         console.log(data)
         //creating elements and then appending data to the page for current weather
+        getDate();
         var cityTitle = document.createElement("p");
         var temp = document.createElement("p");
         var wind = document.createElement("p");
@@ -69,24 +82,64 @@ submitButton.addEventListener("click" , function(){
         firstCard.appendChild(wind);
         firstCard.appendChild(humidity);
         firstCard.appendChild(UVindex);
-        
-        //creating elements and then appending data to the page for future weather
-        for (var i=0; i <5; i++){
-            console.log(data.daily[i].temp.day)
+
+        function getWeekly(card) {
 
             var ftemp = document.createElement("p");
             var fwind = document.createElement("p");
             var fhumidity = document.createElement("p");
-
+        
+            
             ftemp.textContent = data.daily[i].temp.day;
             fwind.textContent = data.daily[i].wind;
             fhumidity.textContent = data.daily[i].humidity;
+        
+            
+            card.appendChild(ftemp);
+            card.appendChild(fwind);
+            card.appendChild(fhumidity);
+        
+        }
 
-            secondCard.appendChild(ftemp);
-            secondCard.appendChild(fwind);
-            secondCard.appendChild(fhumidity);
+        
+        
+        //creating elements and then appending data to the page for future weather
+        for (var i=0; i <5; i++){
+            console.log(data.daily[0].temp.day)
+
+            switch(i) {
+                case 0:
+                    getWeekly(secondCard1stInfo);
+                    break;
+                case 1:
+                    getWeekly(secondCard2ndInfo);
+                    break;
+                case 2: 
+                    getWeekly(secondCard3rdInfo);
+                    break;
+                case 3:
+                    getWeekly(secondCard4thInfo);
+                    break;
+                case 4:
+                    getWeekly(secondCard5thInfo);
+
+            }
+           
         }
     })
 
+}
+
+function getDate () {
+
+    var fdate = document.createElement("h1");
+    fdate.textContent = moment().format('YYYY-MM-DD');
+    firstCard.append(fdate);
+    fdate.style.fontSize = "14px";
+    fdate.style.marginLeft = "15px";
+    fdate.style.color = "black";
+    console.log(fdate);
+
+    
 }
 

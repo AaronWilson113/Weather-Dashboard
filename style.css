@@ -49,3 +49,33 @@ h2 {
     margin-left: 500px;
     margin-top:350px;
 }
+
+.card {
+
+    position: absolute;
+
+}
+
+#card1 {
+    position: absolute;
+}
+
+#card2 {
+    position: absolute;
+    margin-left: 250px;
+}
+
+#card3 {
+    position: absolute;
+    margin-left:500px;
+}
+
+#card4 {
+    position: absolute;
+    margin-left:750px;
+}
+
+#card5 {
+    position: absolute;
+    margin-left:1000px;
+}
