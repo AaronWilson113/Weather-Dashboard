@@ -21,6 +21,7 @@ var weatherApiv1 = "https://api.openweathermap.org/data/2.5/onecall?lat=";
 var weatherApiv2 = "&lon=";
 var weatherApiv3 = "&appid=35b4263be3c8fb07e61b756e7b5c6337";
 
+// Addeventlistener for button on page
 submitButton.addEventListener("click" , function(){
 
     var requestString = apiv1 + input.value + apiv2
@@ -83,6 +84,7 @@ submitButton.addEventListener("click" , function(){
         firstCard.appendChild(humidity);
         firstCard.appendChild(UVindex);
 
+        //creating elements and then appending data to the page for future weather
         function getWeekly(card) {
 
             var ftemp = document.createElement("p");
@@ -90,9 +92,9 @@ submitButton.addEventListener("click" , function(){
             var fhumidity = document.createElement("p");
         
             
-            ftemp.textContent = data.daily[i].temp.day;
-            fwind.textContent = data.daily[i].wind;
-            fhumidity.textContent = data.daily[i].humidity;
+            ftemp.textContent = "Temp: " + data.daily[i].temp.day;
+            fwind.textContent = "Wind: " + data.daily[i].wind_speed + "MPH";
+            fhumidity.textContent = "Humidity: " + data.daily[i].humidity + "%";
         
             
             card.appendChild(ftemp);
@@ -101,9 +103,6 @@ submitButton.addEventListener("click" , function(){
         
         }
 
-        
-        
-        //creating elements and then appending data to the page for future weather
         for (var i=0; i <5; i++){
             console.log(data.daily[0].temp.day)
 
