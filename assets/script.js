@@ -130,13 +130,26 @@ submitButton.addEventListener("click" , function(){
 }
 
 function getDate () {
+    
 
     var fdate = document.createElement("h1");
+    var firstdate = document.createElement("h1");
+    var sdate = document.createElement("h1");
+    var tdate = document.createElement("h1");
+    var fourDate = document.createElement("h1");
+    var fiveDate = document.createElement("h1");
+
     fdate.textContent = moment().format('YYYY-MM-DD');
+    firstdate.textContent = moment().format('YYYY-MM-DD');
+    
     firstCard.append(fdate);
+    secondCard1stInfo.append(sdate);
+    
+    
     fdate.style.fontSize = "14px";
     fdate.style.marginLeft = "15px";
     fdate.style.color = "black";
+    firstdate.style.color = "black";
     console.log(fdate);
 
     
