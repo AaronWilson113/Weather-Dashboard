@@ -13,7 +13,7 @@ var secondCard5thInfo = document.getElementById("card5");
 var firstCardDate = document.getElementById("firstCard")
 var secondCardDate1 = document.getElementById("blah")
 // Defining Variables for first api call using user input
-var apiv1 = "http://api.openweathermap.org/geo/1.0/direct?q=";
+var apiv1 = "https://api.openweathermap.org/geo/1.0/direct?q=";
 var apiv2 = "&limit=5&appid=35b4263be3c8fb07e61b756e7b5c6337";
 
 // Defining Variables for second api call 
